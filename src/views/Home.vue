@@ -14,7 +14,11 @@
         </div>
         <div
           class="text-right"
-          @click="() => { sideNavCollapse = !sideNavCollapse }"
+          @click="
+            () => {
+              sideNavCollapse = !sideNavCollapse
+            }
+          "
         >
           <i
             role="button"
@@ -23,32 +27,26 @@
         </div>
       </div>
       <div class="">
-        <ul class="">
-          <li class="hover:bg-[#cdd1d4]">
-            <router-link
-              :to="{ name: 'Dashboard' }"
-              class="flex items-center gap-x-4 p-2"
-            >
-              <i class="pl-9" >D</i>
-              <router-link :to="{ name: 'Dashboard' }" :class="[sideNavCollapse ? 'hidden' : '']">
-                Dashboard
-              </router-link>
+        <div class="">
+          <router-link
+            :to="{ name: 'Dashboard' }"
+            class="flex items-center gap-x-4 p-2 hover:bg-[#cdd1d4]"
+          >
+            <i class="pl-9">D</i>
+            <router-link :to="{ name: 'Dashboard' }" :class="[sideNavCollapse ? 'hidden' : '']">
+              Dashboard
             </router-link>
-          </li>
-
+          </router-link>
           <router-link
             :to="{ name: 'Report' }"
             class="flex items-center gap-x-4 p-2 hover:bg-[#cdd1d4]"
           >
-            <i class="pl-9" >R</i>
+            <i class="pl-9">R</i>
             <router-link :to="{ name: 'Report' }" :class="[sideNavCollapse ? 'hidden' : '']">
               Report
             </router-link>
           </router-link>
-          <li>
-            <router-link :to="{ name: 'Login' }"> Logout </router-link>
-          </li>
-        </ul>
+        </div>
       </div>
     </div>
     <div>
