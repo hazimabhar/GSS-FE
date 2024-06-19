@@ -1,6 +1,9 @@
 <template>
   <div class="flex">
-    <div class="w-[15%] min-h-screen bg-slate-500">
+    <div
+      class="min-h-screen bg-slate-500 duration-300"
+      :class="[sideBarCollapse ? 'w-[5%]' : 'w-[15%]']"
+    >
       <div class="flex justify-between p-3 items-center">
         <div class="flex items-center">
           <div>logo</div>
@@ -9,8 +12,19 @@
             <div>Grocery Store System</div>
           </div>
         </div>
-        <div class="text-right">
-          <i role="button" class="fa-solid fa-chevron-left"></i>
+        <div
+          class="text-right z-50"
+          @click="
+            () => {
+              sideBarCollapse = !sideBarCollapse
+            }
+          "
+        >
+          <i
+            role="button"
+            class="fa-solid fa-chevron-left"
+            :class="[sideBarCollapse ? 'rotate-180' : 'rotate-0']"
+          ></i>
         </div>
       </div>
       <div></div>
@@ -24,7 +38,9 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      sideBarCollapse: false
+    }
   },
   created() {}
 }
