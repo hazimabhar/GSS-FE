@@ -44,8 +44,33 @@
       </div>
     </div>
     <div class="w-screen p-4">
-      <div class="flex justify-end">
-        <router-link :to="{ name:'Login'}">
+      <div class="flex justify-end items-center">
+        <div class="mx-5">
+          <span>{{ day }}</span>
+          <span>{{ date }}</span>
+        </div>
+        <router-link
+          data-twe-toggle="tooltip"
+          data-twe-placement="bottom"
+          data-twe-ripple-init
+          data-twe-ripple-color="light"
+          title="Change Password"
+          :to="{ name: 'Login' }"
+          class="mx-1"
+        >
+          <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
+            <i class="fa-solid fa-lock text-[20px] p-2 hover:text-blue-500"></i>
+          </div>
+        </router-link>
+        <router-link
+          data-twe-toggle="tooltip"
+          data-twe-placement="bottom"
+          data-twe-ripple-init
+          data-twe-ripple-color="light"
+          title="Logout"
+          :to="{ name: 'Login' }"
+          class="mx-1"
+        >
           <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
             <i class="fa-solid fa-right-from-bracket text-[20px] p-2 hover:text-red-500"></i>
           </div>
@@ -58,6 +83,7 @@
   </div>
 </template>
 <script>
+import dayjs from 'dayjs'
 import SideNavItem from '../components/SideNavItem.vue'
 export default {
   components: {
@@ -65,10 +91,15 @@ export default {
   },
   data() {
     return {
-      sideNavCollapse: false
+      sideNavCollapse: false,
+      day: '',
+      date: ''
     }
   },
   created() {},
-  mounted() {}
+  mounted() {
+    this.day = dayjs(new Date()).format('dddd ')
+    this.date = dayjs(new Date()).format(' MMMM D, YYYY')
+  }
 }
 </script>
