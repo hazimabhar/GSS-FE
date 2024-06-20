@@ -43,9 +43,13 @@
         </div>
       </div>
     </div>
-    <div>
-      <div>
-        
+    <div class="w-screen p-4">
+      <div class="flex justify-end">
+        <router-link :to="{ name:'Login'}">
+          <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
+            <i class="fa-solid fa-right-from-bracket text-[20px] p-2 hover:text-red-500"></i>
+          </div>
+        </router-link>
       </div>
       <div>
         <RouterView />
