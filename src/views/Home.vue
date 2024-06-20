@@ -28,29 +28,25 @@
       </div>
       <div class="">
         <div class="">
-          <router-link
+          <SideNavItem
+            :side-nav-collapse="sideNavCollapse"
             :to="{ name: 'Dashboard' }"
-            class="flex items-center gap-x-4 p-2 hover:bg-[#cdd1d4]"
-          >
-            <i class="pl-9">D</i>
-            <router-link :to="{ name: 'Dashboard' }" :class="[sideNavCollapse ? 'hidden' : '']">
-              Dashboard
-            </router-link>
-          </router-link>
-          <router-link
+            text="Dashboard"
+            mini-icon="D"
+          ></SideNavItem>
+          <SideNavItem
+            :side-nav-collapse="sideNavCollapse"
             :to="{ name: 'Report' }"
-            class="flex items-center gap-x-4 p-2 hover:bg-[#cdd1d4]"
-          >
-            <i class="pl-9">R</i>
-            <router-link :to="{ name: 'Report' }" :class="[sideNavCollapse ? 'hidden' : '']">
-              Report
-            </router-link>
-          </router-link>
+            text="Report"
+            mini-icon="R"
+          ></SideNavItem>
         </div>
       </div>
     </div>
     <div>
-      <div>This is navbar</div>
+      <div>
+        
+      </div>
       <div>
         <RouterView />
       </div>
@@ -58,7 +54,11 @@
   </div>
 </template>
 <script>
+import SideNavItem from '../components/SideNavItem.vue'
 export default {
+  components: {
+    SideNavItem
+  },
   data() {
     return {
       sideNavCollapse: false

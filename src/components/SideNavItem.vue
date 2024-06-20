@@ -1,7 +1,7 @@
 <template>
   <router-link :to="to" class="flex items-center gap-x-4 p-2 hover:bg-[#cdd1d4]">
     <i class="pl-9">{{ miniIcon }}</i>
-    <router-link :to="{ name: 'Dashboard' }" :class="[sideNavCollapse ? 'hidden' : '']">
+    <router-link :to="to" :class="[sideNavCollapse ? 'hidden' : '']">
       {{text}}
     </router-link>
   </router-link>
