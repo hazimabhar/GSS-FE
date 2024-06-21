@@ -40,6 +40,35 @@
             text="Report"
             mini-icon="R"
           ></SideNavItem>
+          <div>
+            <div class="flex items-center gap-x-16 cursor-pointer hover:bg-[#cdd1d4]" @click="sideNavDropdown('inventory')">
+              <div class="flex gap-x-4 p-2">
+                <div>
+                  <i class="pl-9">I</i>
+                </div>
+                <div :class="[sideNavCollapse ? 'hidden' : '']">
+                  <span> Inventory </span>
+                </div>
+              </div>
+              <div :class="[sideNavCollapse ? 'hidden' : '']">
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+            </div>
+            <div class="px-5" :class="[dropdown.inventory ? '' : 'hidden']">
+              <SideNavItem
+                :side-nav-collapse="sideNavCollapse"
+                :to="{ name: 'Report' }"
+                text="Report"
+                mini-icon="R"
+              ></SideNavItem>
+              <SideNavItem
+                :side-nav-collapse="sideNavCollapse"
+                :to="{ name: 'Report' }"
+                text="Report"
+                mini-icon="R"
+              ></SideNavItem>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -93,13 +122,30 @@ export default {
     return {
       sideNavCollapse: false,
       day: '',
-      date: ''
+      date: '',
+      dropdown:{
+        inventory:false,
+        security: false,
+        report:false,
+      }
     }
   },
   created() {},
   mounted() {
     this.day = dayjs(new Date()).format('dddd ')
     this.date = dayjs(new Date()).format(' MMMM D, YYYY')
+  },
+  methods:{
+    sideNavDropdown(dropdown){
+      const keys = Object.keys(this.dropdown)
+      for (const key of keys){
+        if(dropdown === key){
+          this.dropdown[key] = !this.dropdown[key]
+        }else{
+          this.dropdown[key] = false
+        }
+      }
+    }
   }
 }
 </script>
