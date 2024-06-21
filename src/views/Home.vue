@@ -32,39 +32,68 @@
             :side-nav-collapse="sideNavCollapse"
             :to="{ name: 'Dashboard' }"
             text="Dashboard"
-            mini-icon="D"
+            mini-icon="fa-solid fa-chart-simple"
           ></SideNavItem>
           <SideNavItem
             :side-nav-collapse="sideNavCollapse"
             :to="{ name: 'Report' }"
             text="Report"
-            mini-icon="R"
+            mini-icon="fa-solid fa-folder-open"
           ></SideNavItem>
           <div>
-            <div class="flex items-center gap-x-16 cursor-pointer hover:bg-[#cdd1d4]" @click="sideNavDropdown('inventory')">
+            <div class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]" @click="sideNavDropdown('inventory')">
               <div class="flex gap-x-4 p-2">
                 <div>
-                  <i class="pl-9">I</i>
+                  <i class="pl-8 fa-solid fa-warehouse"></i>
                 </div>
                 <div :class="[sideNavCollapse ? 'hidden' : '']">
                   <span> Inventory </span>
                 </div>
               </div>
-              <div :class="[sideNavCollapse ? 'hidden' : '']">
-                <i class="fa-solid fa-angle-down"></i>
+              <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
+                <i :class="[dropdown.inventory ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down']"></i>
               </div>
             </div>
             <div class="px-5" :class="[dropdown.inventory ? '' : 'hidden']">
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
                 :to="{ name: 'Report' }"
-                text="Report"
+                text="Test1"
                 mini-icon="R"
               ></SideNavItem>
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
                 :to="{ name: 'Report' }"
-                text="Report"
+                text="Test2"
+                mini-icon="R"
+              ></SideNavItem>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]" @click="sideNavDropdown('security')">
+              <div class="flex gap-x-4 p-2">
+                <div>
+                  <i class="pl-8 fa-solid fa-shield"></i>
+                </div>
+                <div :class="[sideNavCollapse ? 'hidden' : '']">
+                  <span> Security </span>
+                </div>
+              </div>
+              <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
+                <i :class="[dropdown.security ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down']"></i>
+              </div>
+            </div>
+            <div class="px-5" :class="[dropdown.security ? '' : 'hidden']">
+              <SideNavItem
+                :side-nav-collapse="sideNavCollapse"
+                :to="{ name: 'Report' }"
+                text="Test3"
+                mini-icon="R"
+              ></SideNavItem>
+              <SideNavItem
+                :side-nav-collapse="sideNavCollapse"
+                :to="{ name: 'Report' }"
+                text="Test4"
                 mini-icon="R"
               ></SideNavItem>
             </div>
@@ -113,7 +142,7 @@
 </template>
 <script>
 import dayjs from 'dayjs'
-import SideNavItem from '../components/SideNavItem.vue'
+import SideNavItem from '../components/SideNav/SideNavItem.vue'
 export default {
   components: {
     SideNavItem
