@@ -41,7 +41,10 @@
             mini-icon="fa-solid fa-folder-open"
           ></SideNavItem>
           <div>
-            <div class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]" @click="sideNavDropdown('inventory')">
+            <div
+              class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]"
+              @click="sideNavDropdown('inventory')"
+            >
               <div class="flex gap-x-4 p-2">
                 <div>
                   <i class="pl-8 fa-solid fa-warehouse"></i>
@@ -51,7 +54,9 @@
                 </div>
               </div>
               <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
-                <i :class="[dropdown.inventory ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down']"></i>
+                <i
+                  :class="[dropdown.inventory ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down']"
+                ></i>
               </div>
             </div>
             <div class="px-5" :class="[dropdown.inventory ? '' : 'hidden']">
@@ -70,7 +75,10 @@
             </div>
           </div>
           <div>
-            <div class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]" @click="sideNavDropdown('security')">
+            <div
+              class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]"
+              @click="sideNavDropdown('security')"
+            >
               <div class="flex gap-x-4 p-2">
                 <div>
                   <i class="pl-8 fa-solid fa-shield"></i>
@@ -80,7 +88,9 @@
                 </div>
               </div>
               <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
-                <i :class="[dropdown.security ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down']"></i>
+                <i
+                  :class="[dropdown.security ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down']"
+                ></i>
               </div>
             </div>
             <div class="px-5" :class="[dropdown.security ? '' : 'hidden']">
@@ -120,43 +130,51 @@
             <i class="fa-solid fa-lock text-[20px] p-2 hover:text-blue-500"></i>
           </div>
         </router-link>
-        <router-link
+        <button
           data-twe-toggle="tooltip"
           data-twe-placement="bottom"
           data-twe-ripple-init
           data-twe-ripple-color="light"
           title="Logout"
-          :to="{ name: 'Login' }"
           class="mx-1"
+          @click="
+            () => {
+              logoutDialog = !logoutDialog
+            }
+          "
         >
           <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
             <i class="fa-solid fa-right-from-bracket text-[20px] p-2 hover:text-red-500"></i>
           </div>
-        </router-link>
+        </button>
       </div>
       <div>
         <RouterView />
       </div>
     </div>
+    <Logout :logout-dialog="logoutDialog" @close-dialog="closeLogoutDialog"></Logout>
   </div>
 </template>
 <script>
 import dayjs from 'dayjs'
-import SideNavItem from '../components/SideNav/SideNavItem.vue'
+import SideNavItem from './component/SideNav/SideNavItem.vue'
+import Logout from './component/LogoutDialog.vue'
 export default {
   components: {
-    SideNavItem
+    SideNavItem,
+    Logout
   },
   data() {
     return {
       sideNavCollapse: false,
       day: '',
       date: '',
-      dropdown:{
-        inventory:false,
+      dropdown: {
+        inventory: false,
         security: false,
-        report:false,
-      }
+        report: false
+      },
+      logoutDialog: false
     }
   },
   created() {},
@@ -164,16 +182,19 @@ export default {
     this.day = dayjs(new Date()).format('dddd ')
     this.date = dayjs(new Date()).format(' MMMM D, YYYY')
   },
-  methods:{
-    sideNavDropdown(dropdown){
+  methods: {
+    sideNavDropdown(dropdown) {
       const keys = Object.keys(this.dropdown)
-      for (const key of keys){
-        if(dropdown === key){
+      for (const key of keys) {
+        if (dropdown === key) {
           this.dropdown[key] = !this.dropdown[key]
-        }else{
+        } else {
           this.dropdown[key] = false
         }
       }
+    },
+    closeLogoutDialog() {
+      this.logoutDialog = false
     }
   }
 }
