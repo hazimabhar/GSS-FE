@@ -55,7 +55,7 @@
               </div>
               <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
                 <i
-                  :class="[dropdown.inventory ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down']"
+                  :class="[dropdown.inventory ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right']"
                 ></i>
               </div>
             </div>
@@ -89,7 +89,7 @@
               </div>
               <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
                 <i
-                  :class="[dropdown.security ? 'fa-solid fa-angle-up' : 'fa-solid fa-angle-down']"
+                  :class="[dropdown.security ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right']"
                 ></i>
               </div>
             </div>
