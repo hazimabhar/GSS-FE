@@ -6,7 +6,10 @@
     >
       <div class="flex justify-between p-3 items-center">
         <div class="flex items-center">
-          <div>logo</div>
+          <div>
+            <img src="/favicon.png":class="[sideNavCollapse ? '' : 'w-max-[50%]']"
+            alt="">
+          </div>
           <div :class="[sideNavCollapse ? 'hidden' : '']">
             <div>GSS</div>
             <!-- <div>Grocery Store System</div> -->
