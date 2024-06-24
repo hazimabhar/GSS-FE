@@ -7,12 +7,14 @@
       <div class="flex justify-between p-3 items-center">
         <div class="flex items-center">
           <div>
-            <img src="/favicon.png":class="[sideNavCollapse ? '' : 'w-max-[50%]']"
+            <img src="/favicon.png":class="[sideNavCollapse ? 'hidden' : '']"
             alt="">
           </div>
-          <div :class="[sideNavCollapse ? 'hidden' : '']">
-            <div>GSS</div>
-            <!-- <div>Grocery Store System</div> -->
+          <div :class="[sideNavCollapse ? 'hidden' : 'text-center px-5']">
+              Grocery Store System
+          </div>
+          <div :class="[sideNavCollapse ? 'px-5' : 'hidden']">
+              GSS  
           </div>
         </div>
         <div
