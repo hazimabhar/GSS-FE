@@ -7,15 +7,10 @@
       <div class="flex justify-between p-3 items-center">
         <div class="flex items-center">
           <div>
-            <img src="/favicon.png":class="[sideNavCollapse ? 'hidden' : '']"
-            alt="">
+            <img src="/favicon.png" :class="[sideNavCollapse ? 'hidden' : '']" alt="" />
           </div>
-          <div :class="[sideNavCollapse ? 'hidden' : 'text-center px-5']">
-              Grocery Store System
-          </div>
-          <div :class="[sideNavCollapse ? 'px-5' : 'hidden']">
-              GSS  
-          </div>
+          <div :class="[sideNavCollapse ? 'hidden' : 'text-center px-5']">Grocery Store System</div>
+          <div :class="[sideNavCollapse ? 'px-5' : 'hidden']">GSS</div>
         </div>
         <div
           class="text-right"
@@ -60,7 +55,9 @@
               </div>
               <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
                 <i
-                  :class="[dropdown.inventory ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right']"
+                  :class="[
+                    dropdown.inventory ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right'
+                  ]"
                 ></i>
               </div>
             </div>
@@ -94,7 +91,9 @@
               </div>
               <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
                 <i
-                  :class="[dropdown.security ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right']"
+                  :class="[
+                    dropdown.security ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-right'
+                  ]"
                 ></i>
               </div>
             </div>
