@@ -7,7 +7,7 @@
       <div class="flex justify-between p-3 items-center">
         <div class="flex items-center">
           <div>
-            <img src="/favicon.png" :class="[sideNavCollapse ? 'hidden' : '']" alt="" />
+            <img src="/sidenav.png" :class="[sideNavCollapse ? 'hidden' : '']" alt="" />
           </div>
           <div :class="[sideNavCollapse ? 'hidden' : 'text-center px-5']">Grocery Store System</div>
           <div :class="[sideNavCollapse ? 'px-5' : 'hidden']">GSS</div>
@@ -45,7 +45,7 @@
               class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]"
               @click="sideNavDropdown('inventory')"
             >
-              <div class="flex gap-x-4 p-2">
+              <div class="flex gap-x-4 px-2 py-4">
                 <div>
                   <i class="pl-8 fa-solid fa-warehouse"></i>
                 </div>
@@ -81,7 +81,7 @@
               class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]"
               @click="sideNavDropdown('security')"
             >
-              <div class="flex gap-x-4 p-2">
+              <div class="flex gap-x-4 px-2 py-4">
                 <div>
                   <i class="pl-8 fa-solid fa-shield"></i>
                 </div>
