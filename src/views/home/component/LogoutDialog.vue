@@ -30,14 +30,14 @@
                 <router-link
                   :to="{ name: 'Login' }"
                   role="button"
-                  class="bg-blue-500 px-5 py-2 text-white hover:bg-blue-800 rounded-3xl mx-1"
+                  class="bg-blue-500 px-5 py-2 text-white hover:bg-blue-700 rounded-3xl mx-1"
                 >
                   <button>CONFIRM</button>
                 </router-link>
                 <div
                   role="button"
                   @click="closeDialog"
-                  class="bg-red-500 px-5 py-2 text-white hover:bg-red-800 rounded-3xl mx-1"
+                  class="bg-red-500 px-5 py-2 text-white hover:bg-red-700 rounded-3xl mx-1"
                 >
                   <button>CANCEL</button>
                 </div>

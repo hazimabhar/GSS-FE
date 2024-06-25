@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
     <div
-      class="min-h-screen bg-[#e6ebef] duration-300"
+      class="min-h-screen shadow-lg shadow-[#e6ebef]-500/50 duration-300"
       :class="[sideNavCollapse ? 'w-[5%]' : 'w-[15%]']"
     >
       <div class="flex justify-between p-3 items-center">
@@ -11,19 +11,6 @@
           </div>
           <div :class="[sideNavCollapse ? 'hidden' : 'text-center px-5']">Grocery Store System</div>
           <div :class="[sideNavCollapse ? 'px-5' : 'hidden']">GSS</div>
-        </div>
-        <div
-          class="text-right"
-          @click="
-            () => {
-              sideNavCollapse = !sideNavCollapse
-            }
-          "
-        >
-          <i
-            role="button"
-            :class="[sideNavCollapse ? 'fa-solid fa-bars' : 'fa-solid fa-chevron-left']"
-          ></i>
         </div>
       </div>
       <div class="">
@@ -116,41 +103,56 @@
       </div>
     </div>
     <div class="w-screen p-4">
-      <div class="flex justify-end items-center">
-        <div class="mx-5">
-          <span>{{ day }}</span>
-          <span>{{ date }}</span>
-        </div>
-        <router-link
-          data-twe-toggle="tooltip"
-          data-twe-placement="bottom"
-          data-twe-ripple-init
-          data-twe-ripple-color="light"
-          title="Change Password"
-          :to="{ name: 'Login' }"
-          class="mx-1"
-        >
-          <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
-            <i class="fa-solid fa-lock text-[20px] p-2 hover:text-blue-500"></i>
-          </div>
-        </router-link>
-        <button
-          data-twe-toggle="tooltip"
-          data-twe-placement="bottom"
-          data-twe-ripple-init
-          data-twe-ripple-color="light"
-          title="Logout"
-          class="mx-1"
+      <div class="flex justify-between">
+        <div
+          class="text-right"
           @click="
             () => {
-              logoutDialog = !logoutDialog
+              sideNavCollapse = !sideNavCollapse
             }
           "
         >
-          <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
-            <i class="fa-solid fa-right-from-bracket text-[20px] p-2 hover:text-red-500"></i>
+          <i
+            role="button"
+            :class="[sideNavCollapse ? 'fa-solid fa-bars' : 'fa-solid fa-chevron-left']"
+          ></i>
+        </div>
+        <div class="flex justify-end items-center">
+          <div class="mx-5">
+            <span>{{ day }}</span>
+            <span>{{ date }}</span>
           </div>
-        </button>
+          <router-link
+            data-twe-toggle="tooltip"
+            data-twe-placement="bottom"
+            data-twe-ripple-init
+            data-twe-ripple-color="light"
+            title="Change Password"
+            :to="{ name: 'Login' }"
+            class="mx-1"
+          >
+            <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
+              <i class="fa-solid fa-lock text-[20px] p-2 hover:text-blue-500"></i>
+            </div>
+          </router-link>
+          <button
+            data-twe-toggle="tooltip"
+            data-twe-placement="bottom"
+            data-twe-ripple-init
+            data-twe-ripple-color="light"
+            title="Logout"
+            class="mx-1"
+            @click="
+              () => {
+                logoutDialog = !logoutDialog
+              }
+            "
+          >
+            <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
+              <i class="fa-solid fa-right-from-bracket text-[20px] p-2 hover:text-red-500"></i>
+            </div>
+          </button>
+        </div>
       </div>
       <div>
         <RouterView />
