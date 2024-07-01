@@ -2,7 +2,7 @@
   <div class="bg-[#141922] min-h-screen">
     <div class="flex items-center justify-center">
       <div
-        class="shadow-lg shodow-inner shadow-[#0c1c38]-500/50 my-[8%] py-8 bg-[url('/landing.png')] bg-no-repeat	bg-white rounded-[15px] min-w-[55%]"
+        class="shadow-lg shodow-inner shadow-[#0c1c38]-500/50 my-[8%] py-8 bg-[url('/landing.png')] bg-no-repeat bg-white rounded-[15px] min-w-[55%]"
       >
         <div class="max-w-[56%]">
           <div class="px-8">
@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="">
-            <form class=" rounded px-12 pt-6 pb-8" @submit.prevent="onSubmit">
+            <form class="rounded px-12 pt-6 pb-8" @submit.prevent="onSubmit">
               <div class="mb-4">
                 <input
                   class="shadow appearance-none border rounded w-full py-4 px-3 mb-3 text-gray-700 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
