@@ -1,9 +1,11 @@
 <template>
   <div class="bg-[#f5f5fa] min-h-screen">
     <div class="flex items-center justify-center">
-      <div class="shadow-lg shodow-inner shadow-[#e6ebef]-500/50 my-[8%] py-8 bg-white rounded-[35px] min-w-[40%]">
+      <div
+        class="shadow-lg shodow-inner shadow-[#e6ebef]-500/50 my-[8%] py-8 bg-white rounded-[35px] min-w-[40%]"
+      >
         <div class="max-w-[56%]">
-          <div class="px-8 ">
+          <div class="px-8">
             <img src="/login.png" alt="" />
           </div>
           <div class="my-4 px-12">
@@ -16,7 +18,7 @@
             </div>
           </div>
           <div class="">
-            <form class="bg-white rounded px-12 pt-6 pb-8">
+            <form class="bg-white rounded px-12 pt-6 pb-8" @submit="onSubmit">
               <div class="mb-4">
                 <!-- <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                   Username
@@ -26,6 +28,7 @@
                   id="emai"
                   type="email"
                   placeholder="Please Enter Your Email"
+                  v-model="form.email"
                 />
                 <p class="text-red-500 text-xs italic">Please choose a email.</p>
               </div>
@@ -38,19 +41,18 @@
                   id="password"
                   type="password"
                   placeholder="Please Enter Your Password"
+                  v-model="form.password"
                 />
                 <p class="text-red-500 text-xs italic">Please choose a password.</p>
               </div>
               <div class="flex justify-between items-center">
-              <div class="text-sm text-[#09a0fe] font-medium">
-                <span>Forgot Password?</span>
-              </div>
-              <div class="bg-[#09a0fe] text-white py-2 px-8 rounded-md ">
-                <button>
-                  <i class="fa-solid fa-arrow-right-long"></i>
+                <div class="text-sm text-[#09a0fe] font-medium">
+                  <span>Forgot Password?</span>
+                </div>
+                <button class="bg-[#09a0fe] text-white py-2 px-8 rounded-md hover:bg-[#80ceff]">
+                    <i class="fa-solid fa-arrow-right-long"></i>
                 </button>
               </div>
-            </div>
             </form>
           </div>
           <div class="px-12 text-[11px] font-medium">
@@ -62,3 +64,23 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  created() {},
+  mounted() {},
+  methods: {
+    onSubmit() {
+      console.log(this.form)
+      this.$router.push({ name: 'Dashboard' })
+    }
+  }
+}
+</script>
