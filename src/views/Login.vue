@@ -95,7 +95,6 @@ export default {
       this.emailError = !this.form.email
       this.passwordError = !this.form.password
       if (!this.emailError && !this.passwordError) {
-        console.log(this.form)
         if (this.form.email == 'admin@admin.com' && this.form.password == 'admin') {
           this.$router.push({ name: 'Dashboard' })
         } else {

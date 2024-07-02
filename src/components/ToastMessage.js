@@ -5,7 +5,7 @@ const toast = useToast()
 export function ToastMessage(type, message) {
   const options = {
     position: 'top-center',
-    timeout: 5000,
+    timeout: 3000,
     closeOnClick: true,
     pauseOnFocusLoss: true,
     pauseOnHover: true,

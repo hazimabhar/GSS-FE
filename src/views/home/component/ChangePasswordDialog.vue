@@ -23,96 +23,101 @@
                   </span>
                 </div>
               </div>
-              <div class="mb-6 relative">
-                <input
-                  class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
-                  :class="passwordError ? ' border-red-500' : 'border-[#c5c5c9]'"
-                  id="password"
-                  :type="togglePassword ? 'text' : 'password'"
-                  placeholder="Please Enter Your Password"
-                  v-model="form.currentPassword"
-                />
-                <button
-                  type="button"
-                  class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
-                  @click="
-                    () => {
-                      togglePassword = !togglePassword
-                    }
-                  "
-                >
-                  <i :class="togglePassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
-                </button>
-                <p :class="passwordError ? 'text-red-500 text-xs italic' : 'hidden'">
-                  Please enter current password.
-                </p>
-              </div>
-              <div class="mb-6 relative">
-                <input
-                  class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
-                  :class="newPasswordError ? ' border-red-500' : 'border-[#c5c5c9]'"
-                  id="newPassword"
-                  :type="toggleNewPassword ? 'text' : 'password'"
-                  placeholder="Please Enter Your New Password"
-                  v-model="form.newPassword"
-                />
-                <button
-                  type="button"
-                  class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
-                  @click="
-                    () => {
-                      toggleNewPassword = !toggleNewPassword
-                    }
-                  "
-                >
-                  <i :class="toggleNewPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
-                </button>
-                <p :class="newPasswordError ? 'text-red-500 text-xs italic' : 'hidden'">
-                  Please enter new password.
-                </p>
-              </div>
-              <div class="mb-6 relative">
-                <input
-                  class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
-                  :class="confirmNewPasswordError ? ' border-red-500' : 'border-[#c5c5c9]'"
-                  id="confirmNewPassword"
-                  :type="toggleConfirmNewPassword ? 'text' : 'password'"
-                  placeholder="Please Confirm Your New Password"
-                  v-model="form.confirmNewPassword"
-                />
-                <button
-                  type="button"
-                  class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
-                  @click="
-                    () => {
-                      toggleConfirmNewPassword = !toggleConfirmNewPassword
-                    }
-                  "
-                >
-                  <i
-                    :class="toggleConfirmNewPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
-                  ></i>
-                </button>
-                <p :class="confirmNewPasswordError ? 'text-red-500 text-xs italic' : 'hidden'">
-                  Please confirm new password.
-                </p>
-              </div>
-              <div class="flex justify-end">
-                <router-link
-                  :to="{ name: 'Login' }"
-                  role="button"
-                  class="bg-blue-500 px-5 py-2 text-white hover:bg-blue-700 rounded-3xl mx-1"
-                >
-                  <button>CONFIRM</button>
-                </router-link>
-                <div
-                  role="button"
-                  @click="closeDialog"
-                  class="bg-red-500 px-5 py-2 text-white hover:bg-red-700 rounded-3xl mx-1"
-                >
-                  <button>CANCEL</button>
+              <form class="rounded px-6 pt-3 pb-4" @submit.prevent="onSubmit">
+                <div class="mb-6 relative">
+                  <input
+                    class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
+                    :class="currentPasswordError ? ' border-red-500' : 'border-[#c5c5c9]'"
+                    id="password"
+                    :type="togglePassword ? 'text' : 'password'"
+                    placeholder="Please Enter Your Password"
+                    v-model="form.currentPassword"
+                  />
+                  <button
+                    type="button"
+                    class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
+                    @click="
+                      () => {
+                        togglePassword = !togglePassword
+                      }
+                    "
+                  >
+                    <i :class="togglePassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+                  </button>
+                  <p :class="currentPasswordError ? 'text-red-500 text-xs italic' : 'hidden'">
+                    Please enter current password.
+                  </p>
                 </div>
-              </div>
+                <div class="mb-6 relative">
+                  <input
+                    class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
+                    :class="newPasswordError ? ' border-red-500' : 'border-[#c5c5c9]'"
+                    id="newPassword"
+                    :type="toggleNewPassword ? 'text' : 'password'"
+                    placeholder="Please Enter Your New Password"
+                    v-model="form.newPassword"
+                  />
+                  <button
+                    type="button"
+                    class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
+                    @click="
+                      () => {
+                        toggleNewPassword = !toggleNewPassword
+                      }
+                    "
+                  >
+                    <i :class="toggleNewPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+                  </button>
+                  <p :class="newPasswordError ? 'text-red-500 text-xs italic' : 'hidden'">
+                    Please enter new password.
+                  </p>
+                </div>
+                <div class="mb-6 relative">
+                  <input
+                    class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
+                    :class="confirmNewPasswordError ? ' border-red-500' : 'border-[#c5c5c9]'"
+                    id="confirmNewPassword"
+                    :type="toggleConfirmNewPassword ? 'text' : 'password'"
+                    placeholder="Please Confirm Your New Password"
+                    v-model="form.confirmNewPassword"
+                  />
+                  <button
+                    type="button"
+                    class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
+                    @click="
+                      () => {
+                        toggleConfirmNewPassword = !toggleConfirmNewPassword
+                      }
+                    "
+                  >
+                    <i
+                      :class="
+                        toggleConfirmNewPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'
+                      "
+                    ></i>
+                  </button>
+                  <p :class="confirmNewPasswordError ? 'text-red-500 text-xs italic' : 'hidden'">
+                    Please confirm new password.
+                  </p>
+                </div>
+                <div class="flex justify-end">
+                  <button
+                    type="submit"
+                    :to="{ name: 'Login' }"
+                    role="button"
+                    class="bg-blue-500 px-5 py-2 text-white hover:bg-blue-700 rounded-3xl mx-1"
+                  >
+                    <button>CONFIRM</button>
+                  </button>
+                  <div
+                    role="button"
+                    @click="closeDialog"
+                    class="bg-red-500 px-5 py-2 text-white hover:bg-red-700 rounded-3xl mx-1"
+                  >
+                    <button>CANCEL</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -122,6 +127,7 @@
 </template>
 
 <script>
+import { ToastMessage } from '@/components/ToastMessage'
 export default {
   data() {
     return {
@@ -133,7 +139,7 @@ export default {
       togglePassword: false,
       toggleNewPassword: false,
       toggleConfirmNewPassword: false,
-      passwordError: false,
+      currentPasswordError: false,
       newPasswordError: false,
       confirmNewPasswordError: false
     }
@@ -150,6 +156,20 @@ export default {
   methods: {
     closeDialog() {
       this.$emit('closeDialog')
+    },
+    onSubmit() {
+      this.currentPasswordError = !this.form.currentPassword
+      this.newPasswordError = !this.form.newPassword
+      this.confirmNewPasswordError = !this.form.confirmNewPassword
+
+      if (!this.passwordError && !this.newPasswordError && !this.confirmNewPasswordError) {
+        if (this.form.newPassword != this.form.confirmNewPassword) {
+          ToastMessage('error', 'Invalid New Password. \nPlease try again!')
+        } else {
+          ToastMessage('success', 'Password Changed Successfully')
+          this.closeDialog()
+        }
+      }
     }
   }
 }
