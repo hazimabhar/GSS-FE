@@ -166,6 +166,7 @@ export default {
         if (this.form.newPassword != this.form.confirmNewPassword) {
           ToastMessage('error', 'Invalid New Password. \nPlease try again!')
         } else {
+          Object.assign(this.form, { currentPassword: '', newPassword: '', confirmNewPassword:'' })
           ToastMessage('success', 'Password Changed Successfully')
           this.closeDialog()
         }
