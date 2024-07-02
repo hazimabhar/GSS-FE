@@ -75,6 +75,7 @@
   </div>
 </template>
 <script>
+import { ToastMessage } from '@/components/ToastMessage'
 export default {
   data() {
     return {
@@ -95,7 +96,11 @@ export default {
       this.passwordError = !this.form.password
       if (!this.emailError && !this.passwordError) {
         console.log(this.form)
-        this.$router.push({ name: 'Dashboard' })
+        if (this.form.email == 'admin@admin.com' && this.form.password == 'admin') {
+          this.$router.push({ name: 'Dashboard' })
+        } else {
+          ToastMessage('error', 'Invalid email address or password. \nPlease try again!')
+        }
       }
     }
   }
