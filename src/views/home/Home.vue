@@ -122,19 +122,23 @@
             <span>{{ day }}</span>
             <span>{{ date }}</span>
           </div>
-          <router-link
+          <button
             data-twe-toggle="tooltip"
             data-twe-placement="bottom"
             data-twe-ripple-init
             data-twe-ripple-color="light"
             title="Change Password"
-            :to="{ name: 'Login' }"
             class="mx-1"
+            @click="
+              () => {
+                changePasswordDialog = !changePasswordDialog
+              }
+            "
           >
             <div role="button" class="bg-[#e6ebef] hover:bg-[#dbe1e6] rounded-full">
               <i class="fa-solid fa-lock text-[20px] p-2 hover:text-blue-500"></i>
             </div>
-          </router-link>
+          </button>
           <button
             data-twe-toggle="tooltip"
             data-twe-placement="bottom"
@@ -158,17 +162,23 @@
         <RouterView />
       </div>
     </div>
-    <Logout :logout-dialog="logoutDialog" @close-dialog="closeLogoutDialog"></Logout>
+    <Logout :logout-dialog="logoutDialog" @close-dialog="()=>{logoutDialog = !logoutDialog}"></Logout>
+    <ChangePassword
+      :change-password-dialog="changePasswordDialog"
+      @close-dialog="() =>{changePasswordDialog = !changePasswordDialog}"
+    ></ChangePassword>
   </div>
 </template>
 <script>
 import dayjs from 'dayjs'
 import SideNavItem from './component/SideNav/SideNavItem.vue'
 import Logout from './component/LogoutDialog.vue'
+import ChangePassword from './component/ChangePasswordDialog.vue'
 export default {
   components: {
     SideNavItem,
-    Logout
+    Logout,
+    ChangePassword
   },
   data() {
     return {
@@ -180,7 +190,8 @@ export default {
         security: false,
         report: false
       },
-      logoutDialog: false
+      logoutDialog: false,
+      changePasswordDialog: false
     }
   },
   created() {},
@@ -199,9 +210,6 @@ export default {
         }
       }
     },
-    closeLogoutDialog() {
-      this.logoutDialog = false
-    }
   }
 }
 </script>
