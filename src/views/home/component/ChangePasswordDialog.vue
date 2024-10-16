@@ -24,7 +24,7 @@
                 </div>
               </div>
               <form class="rounded px-6 pt-3 pb-4" @submit.prevent="onSubmit">
-                <div class="py-5">
+                <div class="py-2">
                   <div class="relative w-full min-w-[200px] h-11">
                     <div
                       class="absolute grid w-5 h-5 place-items-center top-2/4 right-3 -translate-y-2/4 z-50"
@@ -45,16 +45,31 @@
                       </button>
                     </div>
                     <input
-                      class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer text-black outline outline-0 focus:outline-0 disabled:bg-[#c5c5c9] disabled:border-0 placeholder-shown:border placeholder-shown:border-[#c5c5c9] placeholder-shown:border-t-[#c5c5c9] focus:border-2 border-t-transparent focus:border-t-transparent border-[#c5c5c9] focus:border-[#70b4dd]"
+                      class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer outline outline-0 focus:outline-0 disabled:bg-[#c5c5c9] disabled:border-0 placeholder-shown:border focus:border-2 border-t-transparent focus:border-t-transparent"
+                      :class="
+                        currentPasswordError
+                          ? 'text-[#ff6f6f] placeholder-shown:border-[#ff6f6f] placeholder-shown:border-t-[#ff6f6f] focus:border-[#ff6f6f] border-[#ff6f6f]'
+                          : 'text-black placeholder-shown:border-[#c5c5c9] placeholder-shown:border-t-[#c5c5c9] focus:border-[#70b4dd] border-[#c5c5c9]'
+                      "
                       :type="togglePassword ? 'text' : 'password'"
                       placeholder=" "
-                    /><label
-                      class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-[#c5c5c9] leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-[#c5c5c9] transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1] text-[#c5c5c9] peer-focus:text-[#70b4dd] before:border-[#c5c5c9] peer-focus:before:!border-[#70b4dd] after:border-[#c5c5c9] peer-focus:after:!border-[#70b4dd]"
+                      v-model="form.currentPassword"
+                    />
+                    <label
+                      class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-[#c5c5c9] transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1]"
+                      :class="
+                        currentPasswordError
+                          ? 'peer-placeholder-shown:text-[#ff6f6f] text-[#ff6f6f] peer-focus:text-[#ff6f6f] before:border-[#ff6f6f] peer-focus:before:!border-[#ff6f6f] after:border-[#ff6f6f] peer-focus:after:!border-[#ff6f6f]'
+                          : 'peer-placeholder-shown:text-[#c5c5c9] text-[#c5c5c9] peer-focus:text-[#70b4dd] before:border-[#c5c5c9] peer-focus:before:!border-[#70b4dd] after:border-[#c5c5c9] peer-focus:after:!border-[#70b4dd]'
+                      "
                       >Current Password
                     </label>
                   </div>
+                  <p :class="currentPasswordError ? 'text-red-500 text-xs italic pt-2' : 'hidden'">
+                    Please insert a password.
+                  </p>
                 </div>
-                <div class="py-5">
+                <div class="py-2">
                   <div class="relative w-full min-w-[200px] h-11">
                     <div
                       class="absolute grid w-5 h-5 place-items-center top-2/4 right-3 -translate-y-2/4 z-50"
@@ -75,16 +90,30 @@
                       </button>
                     </div>
                     <input
-                      class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer text-black outline outline-0 focus:outline-0 disabled:bg-[#c5c5c9] disabled:border-0 placeholder-shown:border placeholder-shown:border-[#c5c5c9] placeholder-shown:border-t-[#c5c5c9] focus:border-2 border-t-transparent focus:border-t-transparent border-[#c5c5c9] focus:border-[#70b4dd]"
+                      class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer outline outline-0 focus:outline-0 disabled:bg-[#c5c5c9] disabled:border-0 placeholder-shown:border focus:border-2 border-t-transparent focus:border-t-transparent"
+                      :class="
+                        newPasswordError
+                          ? 'text-[#ff6f6f] placeholder-shown:border-[#ff6f6f] placeholder-shown:border-t-[#ff6f6f] focus:border-[#ff6f6f] border-[#ff6f6f]'
+                          : 'text-black placeholder-shown:border-[#c5c5c9] placeholder-shown:border-t-[#c5c5c9] focus:border-[#70b4dd] border-[#c5c5c9]'
+                      "
                       :type="toggleNewPassword ? 'text' : 'password'"
                       placeholder=" "
+                      v-model="form.newPassword"
                     /><label
-                      class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-[#c5c5c9] leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-[#c5c5c9] transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1] text-[#c5c5c9] peer-focus:text-[#70b4dd] before:border-[#c5c5c9] peer-focus:before:!border-[#70b4dd] after:border-[#c5c5c9] peer-focus:after:!border-[#70b4dd]"
+                      class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-[#c5c5c9] transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1]"
+                      :class="
+                        newPasswordError
+                          ? 'peer-placeholder-shown:text-[#ff6f6f] text-[#ff6f6f] peer-focus:text-[#ff6f6f] before:border-[#ff6f6f] peer-focus:before:!border-[#ff6f6f] after:border-[#ff6f6f] peer-focus:after:!border-[#ff6f6f]'
+                          : 'peer-placeholder-shown:text-[#c5c5c9] text-[#c5c5c9] peer-focus:text-[#70b4dd] before:border-[#c5c5c9] peer-focus:before:!border-[#70b4dd] after:border-[#c5c5c9] peer-focus:after:!border-[#70b4dd]'
+                      "
                       >New Password
                     </label>
                   </div>
+                  <p :class="newPasswordError ? 'text-red-500 text-xs italic pt-2' : 'hidden'">
+                    Please insert a new password.
+                  </p>
                 </div>
-                <div class="py-5">
+                <div class="py-2">
                   <div class="relative w-full min-w-[200px] h-11">
                     <div
                       class="absolute grid w-5 h-5 place-items-center top-2/4 right-3 -translate-y-2/4 z-50"
@@ -99,113 +128,51 @@
                         "
                       >
                         <i
-                          :class="toggleConfirmNewPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
+                          :class="
+                            toggleConfirmNewPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'
+                          "
                           aria-hidden="true"
                         ></i>
                       </button>
                     </div>
                     <input
-                      class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer text-black outline outline-0 focus:outline-0 disabled:bg-[#c5c5c9] disabled:border-0 placeholder-shown:border placeholder-shown:border-[#c5c5c9] placeholder-shown:border-t-[#c5c5c9] focus:border-2 border-t-transparent focus:border-t-transparent border-[#c5c5c9] focus:border-[#70b4dd]"
+                      class="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-transparent border rounded-md peer outline outline-0 focus:outline-0 disabled:bg-[#c5c5c9] disabled:border-0 placeholder-shown:border focus:border-2 border-t-transparent focus:border-t-transparent"
+                      :class="
+                        confirmNewPasswordError
+                          ? 'text-[#ff6f6f] placeholder-shown:border-[#ff6f6f] placeholder-shown:border-t-[#ff6f6f] focus:border-[#ff6f6f] border-[#ff6f6f]'
+                          : 'text-black placeholder-shown:border-[#c5c5c9] placeholder-shown:border-t-[#c5c5c9] focus:border-[#70b4dd] border-[#c5c5c9]'
+                      "
                       :type="toggleConfirmNewPassword ? 'text' : 'password'"
                       placeholder=" "
+                      v-model="form.confirmNewPassword"
                     /><label
-                      class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-[#c5c5c9] leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-[#c5c5c9] transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1] text-[#c5c5c9] peer-focus:text-[#70b4dd] before:border-[#c5c5c9] peer-focus:before:!border-[#70b4dd] after:border-[#c5c5c9] peer-focus:after:!border-[#70b4dd]"
+                      class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-[#c5c5c9] transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[4.1]"
+                      :class="
+                        confirmNewPasswordError
+                          ? 'peer-placeholder-shown:text-[#ff6f6f] text-[#ff6f6f] peer-focus:text-[#ff6f6f] before:border-[#ff6f6f] peer-focus:before:!border-[#ff6f6f] after:border-[#ff6f6f] peer-focus:after:!border-[#ff6f6f]'
+                          : 'peer-placeholder-shown:text-[#c5c5c9] text-[#c5c5c9] peer-focus:text-[#70b4dd] before:border-[#c5c5c9] peer-focus:before:!border-[#70b4dd] after:border-[#c5c5c9] peer-focus:after:!border-[#70b4dd]'
+                      "
                       >Confirm New Password
                     </label>
                   </div>
-                </div>
-                <!-- <div class="mb-6 relative">
-                  <input
-                    class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
-                    :class="currentPasswordError ? ' border-red-500' : 'border-[#c5c5c9]'"
-                    id="password"
-                    :type="togglePassword ? 'text' : 'password'"
-                    placeholder="Please Enter Your Password"
-                    v-model="form.currentPassword"
-                  />
-                  <button
-                    type="button"
-                    class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
-                    @click="
-                      () => {
-                        togglePassword = !togglePassword
-                      }
-                    "
+                  <p
+                    :class="confirmNewPasswordError ? 'text-red-500 text-xs italic pt-2' : 'hidden'"
                   >
-                    <i :class="togglePassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
-                  </button>
-                  <p :class="currentPasswordError ? 'text-red-500 text-xs italic' : 'hidden'">
-                    Please enter current password.
+                    Please insert a password confirmation.
                   </p>
                 </div>
-                <div class="mb-6 relative">
-                  <input
-                    class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
-                    :class="newPasswordError ? ' border-red-500' : 'border-[#c5c5c9]'"
-                    id="newPassword"
-                    :type="toggleNewPassword ? 'text' : 'password'"
-                    placeholder="Please Enter Your New Password"
-                    v-model="form.newPassword"
-                  />
+                <div class="flex justify-end pt-5">
                   <button
-                    type="button"
-                    class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
-                    @click="
-                      () => {
-                        toggleNewPassword = !toggleNewPassword
-                      }
-                    "
-                  >
-                    <i :class="toggleNewPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
-                  </button>
-                  <p :class="newPasswordError ? 'text-red-500 text-xs italic' : 'hidden'">
-                    Please enter new password.
-                  </p>
-                </div>
-                <div class="mb-6 relative">
-                  <input
-                    class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
-                    :class="confirmNewPasswordError ? ' border-red-500' : 'border-[#c5c5c9]'"
-                    id="confirmNewPassword"
-                    :type="toggleConfirmNewPassword ? 'text' : 'password'"
-                    placeholder="Please Confirm Your New Password"
-                    v-model="form.confirmNewPassword"
-                  />
-                  <button
-                    type="button"
-                    class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
-                    @click="
-                      () => {
-                        toggleConfirmNewPassword = !toggleConfirmNewPassword
-                      }
-                    "
-                  >
-                    <i
-                      :class="
-                        toggleConfirmNewPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'
-                      "
-                    ></i>
-                  </button>
-                  <p :class="confirmNewPasswordError ? 'text-red-500 text-xs italic' : 'hidden'">
-                    Please confirm new password.
-                  </p>
-                </div> -->
-                <div class="flex justify-end">
-                  <button
-                    type="submit"
-                    :to="{ name: 'Login' }"
-                    role="button"
                     class="bg-blue-500 px-5 py-2 text-white hover:bg-blue-700 rounded-3xl mx-1"
                   >
-                    <button>CONFIRM</button>
+                    CONFIRM
                   </button>
-                  <div
-                    role="button"
+                  <button
                     @click="closeDialog"
                     class="bg-red-500 px-5 py-2 text-white hover:bg-red-700 rounded-3xl mx-1"
                   >
-                    <button>CANCEL</button>
-                  </div>
+                    CANCEL
+                  </button>
                 </div>
               </form>
             </div>
@@ -246,6 +213,7 @@ export default {
   watch: {},
   methods: {
     closeDialog() {
+      this.resetForm()
       this.$emit('closeDialog')
     },
     onSubmit() {
@@ -253,15 +221,44 @@ export default {
       this.newPasswordError = !this.form.newPassword
       this.confirmNewPasswordError = !this.form.confirmNewPassword
 
-      if (!this.passwordError && !this.newPasswordError && !this.confirmNewPasswordError) {
-        if (this.form.newPassword != this.form.confirmNewPassword) {
-          ToastMessage('error', 'Invalid New Password. \nPlease try again!')
-        } else {
-          Object.assign(this.form, { currentPassword: '', newPassword: '', confirmNewPassword: '' })
-          ToastMessage('success', 'Password Changed Successfully')
-          this.closeDialog()
-        }
+      if (this.currentPasswordError || this.newPasswordError || this.confirmNewPasswordError) {
+        ToastMessage('error', 'Please fill in all fields.')
+        return
       }
+
+      // Check if current password is correct
+      if (this.form.currentPassword !== 'admin') {
+        this.currentPasswordError = true
+        ToastMessage('error', 'Incorrect Current Password!')
+        return
+      }
+
+      // Validate if new password matches confirm password
+      if (this.form.newPassword !== this.form.confirmNewPassword) {
+        this.newPasswordError = this.confirmNewPasswordError = true
+        ToastMessage('error', 'New passwords do not match. Please try again!')
+        return
+      }
+
+      this.resetForm()
+
+      ToastMessage('success', 'Password Changed Successfully')
+      this.closeDialog()
+    },
+    resetForm() {
+      this.currentPasswordError = false
+      this.newPasswordError = false
+      this.confirmNewPasswordError = false
+
+      this.togglePassword = false
+      this.toggleNewPassword = false
+      this.toggleConfirmNewPassword = false
+
+      Object.assign(this.form, {
+        currentPassword: '',
+        newPassword: '',
+        confirmNewPassword: ''
+      })
     }
   }
 }
