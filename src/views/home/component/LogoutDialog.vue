@@ -24,7 +24,7 @@
                 </div>
               </div>
               <div class="p-10">
-                <h3 class="text-yellow-500">Are you sure you want to log out?</h3>
+                <h3 class="text-[#f1b06c] font-semibold">Are you sure you want to log out?</h3>
               </div>
               <div class="flex justify-end">
                 <router-link
