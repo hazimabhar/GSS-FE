@@ -1,3 +1,3 @@
 <template>
-    <h1>Thisisreportpage</h1>
+    <h1>Report List</h1>
 </template>
