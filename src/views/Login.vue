@@ -6,7 +6,7 @@
       >
         <div class="max-w-[56%]">
           <div class="px-8">
-            <img src="/login.png" alt="" />
+            <img src="../../public/login.png" alt="" />
           </div>
           <div class="my-4 px-12">
             <div class="flex text-[30px]">
