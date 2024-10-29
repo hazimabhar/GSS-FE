@@ -19,6 +19,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "@material-tailwind/html": "^2.2.2",
     "dayjs": "^1.11.11",
+    "flowbite": "^2.5.2",
     "gss-fe": "file:",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",

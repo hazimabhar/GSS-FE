@@ -35,12 +35,70 @@
     </div>
     <div class="flex justify-end pt-5">
       <button
+        id="dropdownSortButton"
+        data-dropdown-toggle="dropdownSort"
         class="px-4 py-2 rounded-lg mx-1 outline outline-1 flex outline-[#b0b5b9] hover:outline-[#70b4dd] hover:outline-2"
       >
         <div><i class="fa-solid fa-arrow-up-z-a text-sm"></i></div>
         <div class="px-2 text-[15px]">Sort by</div>
       </button>
+      <!-- Dropdown menu -->
+      <div
+        id="dropdownSort"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+      >
+        <ul
+          class="py-2 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownSortButton"
+        >
+          <li>
+            <a
+              href="#"
+              class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
+            >
+              <div class="flex-shrink-0">
+                <img class="rounded-full w-6 h-6" src="/date.svg" alt="date" />
+              </div>
+              <div class="w-full py-1 pl-2">
+                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Date</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
+            >
+              <div class="flex-shrink-0">
+                <img class="rounded-full w-6 h-6" src="/total.svg" alt="total" />
+              </div>
+              <div class="w-full py-1 pl-2">
+                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Total</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
+            >
+              <div class="flex-shrink-0">
+                <img class="rounded-full w-6 h-6" src="/closedby.svg" alt="closedby" />
+              </div>
+              <div class="w-full py-1 pl-2">
+                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Closed By</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
       <button
+        @click="
+          () => {
+            filterDialog = !filterDialog
+          }
+        "
         class="px-5 py-2 rounded-lg mx-1 outline outline-1 flex outline-[#b0b5b9] hover:outline-[#70b4dd] hover:outline-2"
       >
         <div>
@@ -443,7 +501,7 @@
             </button>
           </div>
           <button
-            class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:border-[#70b4dd] hover:text-[#70b4dd]   focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:border-[#70b4dd] hover:text-[#70b4dd] focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"
           >
             Next
@@ -452,11 +510,18 @@
       </div>
     </div>
   </div>
+  <FilterDialog :filter-dialog="filterDialog" @close-dialog="()=>{filterDialog = !filterDialog}"></FilterDialog>
 </template>
 <script>
+import { initFlowbite } from 'flowbite'
+import FilterDialog from './component/Filter.vue'
 export default {
+  components: {
+   FilterDialog
+  },
   data() {
     return {
+      filterDialog: false,
       tabs: {
         dailyTab: true,
         weeklyTab: false,
@@ -466,7 +531,9 @@ export default {
     }
   },
   created() {},
-  mounted() {},
+  mounted() {
+    initFlowbite()
+  },
   methods: {
     onTabClick(tab) {
       const keys = Object.keys(this.tabs)
