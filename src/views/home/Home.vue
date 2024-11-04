@@ -27,17 +27,29 @@
             text="Report"
             mini-icon="fa-solid fa-folder-open"
           ></SideNavItem>
-          <div>
+          <SideNavItem
+            :side-nav-collapse="sideNavCollapse"
+            :to="{ name: 'Inventory' }"
+            text="Inventory"
+            mini-icon="fa-solid fa-warehouse"
+          ></SideNavItem>
+          <SideNavItem
+            :side-nav-collapse="sideNavCollapse"
+            :to="{ name: 'Inventory' }"
+            text="Cashier"
+            mini-icon="fa-solid fa-cash-register text-xl"
+          ></SideNavItem>
+          <!-- <div>
             <div
               class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]"
-              @click="sideNavDropdown('inventory')"
+              @click="sideNavDropdown('management')"
             >
               <div class="flex gap-x-4 px-2 py-4">
                 <div>
                   <i class="pl-8 fa-solid fa-warehouse"></i>
                 </div>
                 <div :class="[sideNavCollapse ? 'hidden' : '']">
-                  <span> Inventory </span>
+                  <span> Management </span>
                 </div>
               </div>
               <div class="px-4" :class="[sideNavCollapse ? 'hidden' : '']">
@@ -48,11 +60,11 @@
                 ></i>
               </div>
             </div>
-            <div class="px-5" :class="[dropdown.inventory ? '' : 'hidden']">
+            <div class="px-5" :class="[dropdown.management ? '' : 'hidden']">
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
                 :to="{ name: 'Report' }"
-                text="Test1"
+                text="User"
                 mini-icon="R"
               ></SideNavItem>
               <SideNavItem
@@ -62,7 +74,7 @@
                 mini-icon="R"
               ></SideNavItem>
             </div>
-          </div>
+          </div> -->
           <div>
             <div
               class="flex items-center justify-between cursor-pointer hover:bg-[#cdd1d4]"
@@ -88,13 +100,19 @@
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
                 :to="{ name: 'Report' }"
-                text="Test3"
+                text="Access Right"
+                mini-icon="A"
+              ></SideNavItem>
+              <SideNavItem
+                :side-nav-collapse="sideNavCollapse"
+                :to="{ name: 'Report' }"
+                text="Role"
                 mini-icon="R"
               ></SideNavItem>
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
                 :to="{ name: 'Report' }"
-                text="Test4"
+                text="User"
                 mini-icon="R"
               ></SideNavItem>
             </div>
@@ -186,7 +204,7 @@ export default {
       day: '',
       date: '',
       dropdown: {
-        inventory: false,
+        management: false,
         security: false,
         report: false
       },
