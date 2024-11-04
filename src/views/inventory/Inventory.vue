@@ -47,6 +47,11 @@
       </div>
       <div class="flex justify-end items-center">
         <button
+          @click="
+            () => {
+              addInventoryDialog = !addInventoryDialog
+            }
+          "
           class="bg-[#1ba09d] text-white px-4 py-2 rounded-lg mx-1 flex hover:text-black hover:bg-white hover:outline-black hover:outline outline-1"
         >
           <div><i class="fa-regular fa-square-plus"></i></div>
@@ -177,8 +182,10 @@
           </div>
         </div>
       </div>
-      <div class="outline-1 outline-[#c3c7ca] rounded-2xl outline hover:outline-[#70b4dd] hover:outline-2">
-        <div class="flex justify-end p-3 ">
+      <div
+        class="outline-1 outline-[#c3c7ca] rounded-2xl outline hover:outline-[#70b4dd] hover:outline-2"
+      >
+        <div class="flex justify-end p-3">
           <i class="fa-solid fa-trash-can cursor-pointer text-lg hover:text-[#c3c7ca]"></i>
         </div>
         <div class="flex justify-center">
@@ -200,8 +207,10 @@
           </div>
         </div>
       </div>
-      <div class="outline-1 outline-[#c3c7ca] rounded-2xl outline hover:outline-[#70b4dd] hover:outline-2">
-        <div class="flex justify-end p-3 ">
+      <div
+        class="outline-1 outline-[#c3c7ca] rounded-2xl outline hover:outline-[#70b4dd] hover:outline-2"
+      >
+        <div class="flex justify-end p-3">
           <i class="fa-solid fa-trash-can cursor-pointer text-lg hover:text-[#c3c7ca]"></i>
         </div>
         <div class="flex justify-center">
@@ -223,8 +232,10 @@
           </div>
         </div>
       </div>
-      <div class="outline-1 outline-[#c3c7ca] rounded-2xl outline hover:outline-[#70b4dd] hover:outline-2">
-        <div class="flex justify-end p-3 ">
+      <div
+        class="outline-1 outline-[#c3c7ca] rounded-2xl outline hover:outline-[#70b4dd] hover:outline-2"
+      >
+        <div class="flex justify-end p-3">
           <i class="fa-solid fa-trash-can cursor-pointer text-lg hover:text-[#c3c7ca]"></i>
         </div>
         <div class="flex justify-center">
@@ -246,8 +257,10 @@
           </div>
         </div>
       </div>
-      <div class="outline-1 outline-[#c3c7ca] rounded-2xl outline hover:outline-[#70b4dd] hover:outline-2">
-        <div class="flex justify-end p-3 ">
+      <div
+        class="outline-1 outline-[#c3c7ca] rounded-2xl outline hover:outline-[#70b4dd] hover:outline-2"
+      >
+        <div class="flex justify-end p-3">
           <i class="fa-solid fa-trash-can cursor-pointer text-lg hover:text-[#c3c7ca]"></i>
         </div>
         <div class="flex justify-center">
@@ -279,17 +292,29 @@
       }
     "
   ></FilterDialog>
+  <AddInventory
+    :add-inventory-dialog="addInventoryDialog"
+    @close-dialog="
+      () => {
+        addInventoryDialog = !addInventoryDialog
+      }
+    "
+  >
+  </AddInventory>
 </template>
 <script>
 import { initFlowbite } from 'flowbite'
 import FilterDialog from './component/Filter.vue'
+import AddInventory from './component/AddInventory.vue'
 export default {
   components: {
-    FilterDialog
+    FilterDialog,
+    AddInventory
   },
   data() {
     return {
-      filterDialog: false
+      filterDialog: false,
+      addInventoryDialog: false
       //   tabs: {
       //     dailyTab: true,
       //     weeklyTab: false,
