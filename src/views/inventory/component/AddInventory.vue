@@ -211,19 +211,19 @@ export default {
         return
       }
 
-    //   // Check if current password is correct
-    //   if (this.form.productName !== 'admin') {
-    //     this.productNameError = true
-    //     ToastMessage('error', 'Incorrect Current Password!')
-    //     return
-    //   }
+      //   // Check if current password is correct
+      //   if (this.form.productName !== 'admin') {
+      //     this.productNameError = true
+      //     ToastMessage('error', 'Incorrect Current Password!')
+      //     return
+      //   }
 
-    //   // Validate if new password matches confirm password
-    //   if (this.form.newPassword !== this.form.confirmNewPassword) {
-    //     this.newPasswordError = this.confirmNewPasswordError = true
-    //     ToastMessage('error', 'New passwords do not match. Please try again!')
-    //     return
-    //   }
+      //   // Validate if new password matches confirm password
+      //   if (this.form.newPassword !== this.form.confirmNewPassword) {
+      //     this.newPasswordError = this.confirmNewPasswordError = true
+      //     ToastMessage('error', 'New passwords do not match. Please try again!')
+      //     return
+      //   }
 
       this.resetForm()
 
@@ -231,18 +231,17 @@ export default {
       this.closeDialog()
     },
     resetForm() {
+      this.productPriceError = false
+      this.productCategoryError = false
+      this.productBarcodeError = false
       this.productNameError = false
-      this.newPasswordError = false
-      this.confirmNewPasswordError = false
-
-      this.togglePassword = false
-      this.toggleNewPassword = false
-      this.toggleConfirmNewPassword = false
 
       Object.assign(this.form, {
         productName: '',
-        newPassword: '',
-        confirmNewPassword: ''
+        productPrice: '',
+        productCategory: '',
+        productBarcode: '',
+
       })
     }
   }
