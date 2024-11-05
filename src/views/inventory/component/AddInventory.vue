@@ -138,6 +138,23 @@
                     Please insert a product barcode.
                   </p>
                 </div>
+                <div class="py-3">
+                  <label for="posiition" class="block mb-2 text-sm text-black dark:text-white"
+                    >Image</label
+                  >
+                  <BarcodeScanner @scanned="onBarcodeScanned" />
+                  <div>Scanned Result: {{ result }}</div>
+                  <div>Format: {{ format }}</div>
+                  <FilePond
+                    ref="pond"
+                    :allowMultiple="false"
+                    acceptedFileTypes="image/*"
+                    allowImagePreview="true"
+                    allowFileEncode="true"
+                    @addfile="handleFileAdd"
+                  />
+                </div>
+
                 <div class="flex justify-end pt-5">
                   <button
                     class="bg-blue-500 px-5 py-2 text-white hover:bg-blue-700 rounded-3xl mx-1"
@@ -162,6 +179,14 @@
 
 <script>
 import { ToastMessage } from '@/components/ToastMessage'
+import BarcodeScanner from '@/components/BarcodeScanner.vue'
+import vueFilePond from 'vue-filepond'
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import FilePondPluginFileEncode from 'filepond-plugin-file-encode'
+import 'filepond/dist/filepond.min.css'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
+
+const FilePond = vueFilePond(FilePondPluginImagePreview, FilePondPluginFileEncode)
 
 export default {
   data() {
@@ -178,8 +203,14 @@ export default {
       productNameError: false,
       productPriceError: false,
       productCategoryError: false,
-      productBarcodeError: false
+      productBarcodeError: false,
+      result: '',
+      format: ''
     }
+  },
+  components: {
+    FilePond,
+    BarcodeScanner
   },
   props: {
     addInventoryDialog: {
@@ -240,9 +271,17 @@ export default {
         productName: '',
         productPrice: '',
         productCategory: '',
-        productBarcode: '',
-
+        productBarcode: ''
       })
+    },
+    handleFileAdd(error, file) {
+      if (!error && file) {
+        console.log('Base64 String:', file.getFileEncodeDataURL())
+      }
+    },
+    onBarcodeScanned({result, format}) {
+      this.result = result
+      this.format = format
     }
   }
 }

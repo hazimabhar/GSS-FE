@@ -28,14 +28,14 @@
               </div>
               <div class="py-8 px-11">
                 <div class="w-full max-w-sm pb-8">
-                  <label class="block mb-2 text-sm font-medium text-slate-600"> Title </label>
+                  <label class="block mb-2 text-sm font-medium text-slate-600"> Name </label>
                   <input
                     class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                    placeholder="Report Title"
+                    placeholder="Product Name"
                   />
                 </div>
                 <div class="w-full max-w-sm pb-8">
-                  <label class="block mb-2 text-sm font-medium text-slate-600"> Date </label>
+                  <label class="block mb-2 text-sm font-medium text-slate-600"> Created Date </label>
 
                   <div id="date-range-picker" date-rangepicker class="flex items-center">
                     <div class="relative">
@@ -90,7 +90,7 @@
                   </div>
                 </div>
                 <div class="w-full max-w-sm pb-8">
-                  <label class="block mb-2 text-sm font-medium text-slate-600"> Offline Transaction </label>
+                  <label class="block mb-2 text-sm font-medium text-slate-600"> Price </label>
                   <div id="date-range-picker" date-rangepicker class="flex items-center">
                     <div class="relative">
                       <input
@@ -112,7 +112,7 @@
                   </div>
                 </div>
                 <div class="w-full max-w-sm pb-8">
-                  <label class="block mb-2 text-sm font-medium text-slate-600"> Online Transaction </label>
+                  <label class="block mb-2 text-sm font-medium text-slate-600"> Quantity </label>
                   <div id="date-range-picker" date-rangepicker class="flex items-center">
                     <div class="relative">
                       <input
@@ -133,7 +133,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="w-full max-w-sm pb-8">
+                <!-- <div class="w-full max-w-sm pb-8">
                   <label class="block mb-2 text-sm font-medium text-slate-600"> Total Transaction </label>
                   <div id="date-range-picker" date-rangepicker class="flex items-center">
                     <div class="relative">
@@ -154,17 +154,17 @@
                       />
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <label
                   for="posiition"
                   class="block mb-2 text-sm font-medium text-slate-600 dark:text-white"
-                  >Closed By</label
+                  >Category</label
                 >
                 <select
                   id="position"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
-                  <option selected>Choose a position</option>
+                  <option selected>Choose a category</option>
                   <option value="manager">Manager</option>
                   <option value="worker">Worker</option>
                 </select>
@@ -215,7 +215,6 @@ export default {
   },
   methods: {
     closeDialog() {
-      console.log('test')
       this.$emit('closeDialog')
     }
   }

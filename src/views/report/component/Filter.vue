@@ -215,7 +215,6 @@ export default {
   },
   methods: {
     closeDialog() {
-      console.log('test')
       this.$emit('closeDialog')
     }
   }

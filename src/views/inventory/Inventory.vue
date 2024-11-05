@@ -80,10 +80,10 @@
                 class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
               >
                 <div class="flex-shrink-0">
-                  <img class="rounded-full w-6 h-6" src="/date.svg" alt="date" />
+                  <img class="rounded-full w-5 h-5" src="/quantity.svg" alt="date" />
                 </div>
                 <div class="w-full py-1 pl-2">
-                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Date</div>
+                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Quantity</div>
                 </div>
               </a>
             </li>
@@ -96,7 +96,7 @@
                   <img class="rounded-full w-6 h-6" src="/total.svg" alt="total" />
                 </div>
                 <div class="w-full py-1 pl-2">
-                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Total</div>
+                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Price</div>
                 </div>
               </a>
             </li>
@@ -106,10 +106,10 @@
                 class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
               >
                 <div class="flex-shrink-0">
-                  <img class="rounded-full w-6 h-6" src="/closedby.svg" alt="closedby" />
+                  <img class="rounded-full w-5 h-5" src="/name.svg" alt="closedby" />
                 </div>
                 <div class="w-full py-1 pl-2">
-                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Closed By</div>
+                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Name</div>
                 </div>
               </a>
             </li>
