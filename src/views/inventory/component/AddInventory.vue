@@ -111,7 +111,14 @@
                       class="absolute grid w-5 h-5 place-items-center top-2/4 right-3 -translate-y-2/4 z-50"
                     >
                       <button type="button" class="absolute rounded-e-md text-slate-400">
-                        <i class="fa-solid fa-barcode hover:text-black"></i>
+                        <i
+                          @click="
+                            () => {
+                              scannerDialog = true
+                            }
+                          "
+                          class="fa-solid fa-barcode hover:text-black"
+                        ></i>
                       </button>
                     </div>
                     <input
@@ -142,9 +149,14 @@
                   <label for="posiition" class="block mb-2 text-sm text-black dark:text-white"
                     >Image</label
                   >
-                  <BarcodeScanner @scanned="onBarcodeScanned" />
-                  <div>Scanned Result: {{ result }}</div>
-                  <div>Format: {{ format }}</div>
+                  <ScanDialog
+                    :scanner-dialog="scannerDialog"
+                    @close-dialog="
+                      () => {
+                        scannerDialog = !scannerDialog
+                      }
+                    "
+                  ></ScanDialog>
                   <FilePond
                     ref="pond"
                     :allowMultiple="false"
@@ -179,7 +191,7 @@
 
 <script>
 import { ToastMessage } from '@/components/ToastMessage'
-import BarcodeScanner from '@/components/BarcodeScanner.vue'
+import ScanDialog from './ScanDialog.vue'
 import vueFilePond from 'vue-filepond'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import FilePondPluginFileEncode from 'filepond-plugin-file-encode'
@@ -204,13 +216,14 @@ export default {
       productPriceError: false,
       productCategoryError: false,
       productBarcodeError: false,
-      result: '',
-      format: ''
+      scannerDialog: false,
+
     }
   },
   components: {
     FilePond,
-    BarcodeScanner
+    // BarcodeScanner,
+    ScanDialog
   },
   props: {
     addInventoryDialog: {
@@ -278,10 +291,6 @@ export default {
       if (!error && file) {
         console.log('Base64 String:', file.getFileEncodeDataURL())
       }
-    },
-    onBarcodeScanned({result, format}) {
-      this.result = result
-      this.format = format
     }
   }
 }

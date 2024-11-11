@@ -27,7 +27,6 @@ export default {
             width: 500,
             height: 300,
             facingMode: 'environment'
-            // deviceId: '7832475934759384534'
           },
           area: {
             // defines rectangle of the detection/localization area
@@ -39,7 +38,19 @@ export default {
           singleChannel: false // true: only the red color-channel is read
         },
         decoder: {
-          readers: ['code_128_reader', 'ean_reader', 'ean_8_reader'] // Specify the barcode formats you want
+          readers: [
+            'code_128_reader',
+            'ean_reader',
+            'ean_8_reader',
+            'code_39_reader',
+            'code_39_vin_reader',
+            'codabar_reader',
+            'upc_reader',
+            'upc_e_reader',
+            'i2of5_reader',
+            '2of5_reader',
+            'code_93_reader'
+          ] // Specify the barcode formats you want
         }
       },
       (err) => {
@@ -72,9 +83,4 @@ export default {
 .drawingBuffer {
   display: none !important;
 }
-
-/* #barcode-scanner video{
-  width: 100%;
-  border: 1px solid #ccc; 
-} */
 </style>

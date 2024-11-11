@@ -35,7 +35,7 @@
           ></SideNavItem>
           <SideNavItem
             :side-nav-collapse="sideNavCollapse"
-            :to="{ name: 'Inventory' }"
+            :to="{ name: 'Cashier' }"
             text="Cashier"
             mini-icon="fa-solid fa-cash-register text-xl"
           ></SideNavItem>
