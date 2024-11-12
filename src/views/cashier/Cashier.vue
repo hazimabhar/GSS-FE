@@ -240,8 +240,56 @@
           />
         </div>
       </div>
-
-      <div>Test</div>
+      <div class="outline outline-1 outline-[#b0b5b9] rounded-lg">
+        <div class="flex justify-center">
+          <span class="font-medium py-5 text-xl">Purchase Summary</span>
+        </div>
+        <div class="my-10">
+          <div class="flex justify-between px-5 py-3">
+            <span> Total Items </span>
+            <span> 10 </span>
+          </div>
+          <div class="flex justify-between px-5 py-3">
+            <span> Subtotal </span>
+            <span> 10.00 </span>
+          </div>
+          <div class="flex justify-between px-5 py-3">
+            <span> Discount </span>
+            <span> 1.00 </span>
+          </div>
+          <div class="flex justify-between px-5 py-3">
+            <span> Tax </span>
+            <span> 2.00 </span>
+          </div>
+        </div>
+        <div class="px-5">
+          <hr class="border-[1px] border-black" />
+        </div>
+        <div class="my-10">
+          <div class="flex justify-between px-5 font-semibold">
+            <span> Total </span>
+            <span> 11.00 </span>
+          </div>
+        </div>
+        <form action="">
+          <span class="px-5">Payment Method</span>
+          <div class="flex justify-evenly pt-5">
+            <i
+              class="fa-solid fa-globe text-gray-500 text-[50px] outline-1 outline outline-[#b0b5b9] p-5 rounded-xl hover:text-black hover:outline-[#70b4dd] hover:outline-2"
+            ></i>
+            <i
+              class="fa-solid fa-money-bill text-gray-500 text-[50px] outline-1 outline outline-[#b0b5b9] p-5 rounded-xl hover:text-black hover:outline-[#70b4dd] hover:outline-2"
+            ></i>
+          </div>
+          <div
+            role="button"
+            @click="closeDialog"
+            class="bg-blue-500 py-2 text-white hover:bg-blue-700 rounded-3xl mx-5 text-center my-5"
+          >
+            <button>Pay</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
