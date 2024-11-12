@@ -99,21 +99,21 @@
             <div class="px-5" :class="[dropdown.security ? '' : 'hidden']">
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
-                :to="{ name: 'Report' }"
+                :to="{ name: 'Access Right' }"
                 text="Access Right"
-                mini-icon="A"
+                mini-icon="fa-solid fa-eye"
               ></SideNavItem>
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
                 :to="{ name: 'Report' }"
                 text="Role"
-                mini-icon="R"
+                mini-icon="fa-solid fa-address-card"
               ></SideNavItem>
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
                 :to="{ name: 'Report' }"
                 text="User"
-                mini-icon="R"
+                mini-icon="fa-solid fa-user-large"
               ></SideNavItem>
             </div>
           </div>

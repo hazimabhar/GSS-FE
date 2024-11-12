@@ -5,6 +5,7 @@ import Dashboard from '../views/dashboard/Dashboard.vue'
 import Report from '../views/report/Report.vue'
 import Inventory from '@/views/inventory/Inventory.vue'
 import Payment from '@/views/cashier/Payment.vue'
+import AccessRight from '@/views/security/accessright/AccessRight.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +44,11 @@ const router = createRouter({
           path: '/payment',
           name: 'Payment',
           component: Payment
+        },
+        {
+          path: '/accessright',
+          name: 'Access Right',
+          component: AccessRight
         },
       ]
     },
