@@ -35,8 +35,8 @@
           ></SideNavItem>
           <SideNavItem
             :side-nav-collapse="sideNavCollapse"
-            :to="{ name: 'Cashier' }"
-            text="Cashier"
+            :to="{ name: 'Payment' }"
+            text="Payment"
             mini-icon="fa-solid fa-cash-register text-xl"
           ></SideNavItem>
           <!-- <div>

@@ -275,10 +275,11 @@
           <span class="px-5">Payment Method</span>
           <div class="flex justify-evenly pt-5">
             <i
-              class="fa-solid fa-globe text-gray-500 text-[50px] outline-1 outline outline-[#b0b5b9] p-5 rounded-xl hover:text-black hover:outline-[#70b4dd] hover:outline-2"
-            ></i>
+              class="fa-solid fa-globe cursor-pointer text-gray-500 text-[50px] outline-1 outline outline-[#b0b5b9] p-5 rounded-xl hover:text-black hover:outline-[#70b4dd] hover:outline-2"
+                @click="()=>{QRDialog = true}"
+              ></i>
             <i
-              class="fa-solid fa-money-bill text-gray-500 text-[50px] outline-1 outline outline-[#b0b5b9] p-5 rounded-xl hover:text-black hover:outline-[#70b4dd] hover:outline-2"
+              class="fa-solid fa-money-bill cursor-pointer text-gray-500 text-[50px] outline-1 outline outline-[#b0b5b9] p-5 rounded-xl hover:text-black hover:outline-[#70b4dd] hover:outline-2"
             ></i>
           </div>
           <div
@@ -292,15 +293,26 @@
       </div>
     </div>
   </div>
+  <QRDialog
+    :QR-dialog="QRDialog"
+    @close-dialog="
+      () => {
+        QRDialog = !QRDialog
+      }
+    "
+  >
+  </QRDialog>
 </template>
 <script>
 import { initFlowbite } from 'flowbite'
+import QRDialog from './component/QRDialog.vue'
 export default {
-  components: {},
+  components: {
+    QRDialog
+  },
   data() {
     return {
-      filterDialog: false,
-      addInventoryDialog: false
+      QRDialog: false
     }
   },
   created() {},
