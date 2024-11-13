@@ -105,7 +105,7 @@
               ></SideNavItem>
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
-                :to="{ name: 'Report' }"
+                :to="{ name: 'Role' }"
                 text="Role"
                 mini-icon="fa-solid fa-address-card"
               ></SideNavItem>
