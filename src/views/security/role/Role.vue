@@ -17,13 +17,32 @@
       </select>
     </form>
 
-    <div class="flex flex-col">
-      <button @click="moveSelectedToAssigned" class="">
-        Select<i class="fa-solid fa-caret-right pl-1"></i>
+    <div class="flex flex-col justify-center">
+      <button
+        @click="moveSelectedToAssigned"
+        class="px-4 py-2 rounded-lg mx-1 outline outline-1 flex outline-[#b0b5b9] hover:outline-[#70b4dd] hover:outline-2 justify-center my-2"
+      >
+        Select<i class="fa-solid fa-caret-right pl-1 py-1"></i>
       </button>
-      <button @click="moveAllToAssigned">Select All <i class="fa-solid fa-caret-right pl-1"></i><i class="fa-solid fa-caret-right"></i></button>
-      <button @click="moveSelectedToUnassigned"><i class="fa-solid fa-caret-left pr-1"></i> Remove</button>
-      <button @click="moveAllToUnassigned"><i class="fa-solid fa-caret-left"></i><i class="fa-solid fa-caret-left pr-1"></i> Remove All</button>
+      <button
+        @click="moveAllToAssigned"
+        class="px-4 py-2 rounded-lg mx-1 outline outline-1 flex outline-[#b0b5b9] hover:outline-[#70b4dd] hover:outline-2 justify-center my-2"
+      >
+        Select All <i class="fa-solid fa-caret-right pl-1 py-1"></i
+        ><i class="fa-solid fa-caret-right py-1"></i>
+      </button>
+      <button
+        @click="moveSelectedToUnassigned"
+        class="px-4 py-2 rounded-lg mx-1 outline outline-1 flex outline-[#b0b5b9] hover:outline-[#70b4dd] hover:outline-2 justify-center my-2"
+      >
+        <i class="fa-solid fa-caret-left pr-1 py-1"></i> Remove
+      </button>
+      <button
+        @click="moveAllToUnassigned"
+        class="px-4 py-2 rounded-lg mx-1 outline outline-1 flex outline-[#b0b5b9] hover:outline-[#70b4dd] hover:outline-2 justify-center my-2"
+      >
+        <i class="fa-solid fa-caret-left py-1"></i><i class="fa-solid fa-caret-left pr-1 py-1"></i> Remove All
+      </button>
     </div>
 
     <form class="max-w-sm mx-auto">
