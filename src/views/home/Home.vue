@@ -111,7 +111,7 @@
               ></SideNavItem>
               <SideNavItem
                 :side-nav-collapse="sideNavCollapse"
-                :to="{ name: 'Report' }"
+                :to="{ name: 'User' }"
                 text="User"
                 mini-icon="fa-solid fa-user-large"
               ></SideNavItem>

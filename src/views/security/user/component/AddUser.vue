@@ -1,5 +1,5 @@
 <template>
-  <div v-if="addRoleDialog">
+  <div v-if="addUserDialog">
     <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
       <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -14,7 +14,7 @@
                 <div class="flex items-center align-middle">
                   <i class="fa-solid fa-cookie-bite text-3xl"></i>
                   <h1 class="px-5 text-lg font-semibold leading-6 text-gray-900" id="modal-title">
-                    Add New Role
+                    Add New User
                   </h1>
                 </div>
                 <div>
@@ -248,7 +248,7 @@ export default {
     //   ScanDialog
   },
   props: {
-    addRoleDialog: {
+    addUserDialog: {
       type: Boolean,
       default: false,
       required: true

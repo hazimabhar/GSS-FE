@@ -7,6 +7,7 @@ import Inventory from '@/views/inventory/Inventory.vue'
 import Payment from '@/views/cashier/Payment.vue'
 import AccessRight from '@/views/security/accessright/AccessRight.vue'
 import Role from '@/views/security/role/Role.vue'
+import User from '@/views/security/user/User.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,6 +56,11 @@ const router = createRouter({
           path: '/role',
           name: 'Role',
           component: Role
+        },
+        {
+          path: '/user',
+          name: 'User',
+          component: User
         },
       ]
     },

@@ -1,7 +1,7 @@
 <template>
   <div class="mx-10">
     <div class="mb-10">
-      <h1 class="text-4xl font-semibold">Role</h1>
+      <h1 class="text-4xl font-semibold">User</h1>
     </div>
     <div class="flex justify-between">
       <div>
@@ -49,13 +49,13 @@
         <button
           @click="
             () => {
-              addRoleDialog = !addRoleDialog
+              addUserDialog = !addUserDialog
             }
           "
           class="bg-[#1ba09d] text-white px-4 py-2 rounded-lg mx-1 flex hover:text-black hover:bg-white hover:outline-black hover:outline outline-1"
         >
           <div><i class="fa-regular fa-square-plus"></i></div>
-          <div class="px-2 text-[15px]">Add New Role</div>
+          <div class="px-2 text-[15px]">Add New User</div>
         </button>
         <button
           id="dropdownSortButton"
@@ -344,30 +344,30 @@
       </div>
     </div>
   </div>
-  <AddRole
-    :add-role-dialog="addRoleDialog"
+  <AddUser
+    :add-user-dialog="addUserDialog"
     @close-dialog="
       () => {
-        addRoleDialog = !addRoleDialog
+        addUserDialog = !addUserDialog
       }
     "
   >
-  </AddRole>
+  </AddUser>
 </template>
 <script>
 import { initFlowbite } from 'flowbite'
 //   import FilterDialog from './component/Filter.vue'
 //   import AddInventory from './component/AddInventory.vue'
-import AddRole from './component/AddRole.vue'
+import AddUser from './component/AddUser.vue'
 export default {
   components: {
     //   FilterDialog,
     //   AddInventory
-    AddRole
+    AddUser
   },
   data() {
     return {
-      addRoleDialog: false
+      addUserDialog: false
       //   tabs: {
       //     dailyTab: true,
       //     weeklyTab: false,
