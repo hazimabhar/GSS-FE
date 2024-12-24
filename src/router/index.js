@@ -8,6 +8,8 @@ import Payment from '@/views/cashier/Payment.vue'
 import AccessRight from '@/views/security/accessright/AccessRight.vue'
 import Role from '@/views/security/role/Role.vue'
 import User from '@/views/security/user/User.vue'
+import ResetPassword from '@/views/resetPassword/ResetPassword.vue'
+import NewPassword from '@/views/resetPassword/NewPassword.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +23,16 @@ const router = createRouter({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/resetpassword',
+      name: 'Reset Password',
+      component: ResetPassword
+    },
+    {
+      path: '/newpassword',
+      name: 'New Password',
+      component: NewPassword
     },
     {
       path: '/home',

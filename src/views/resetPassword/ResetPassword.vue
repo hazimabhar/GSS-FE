@@ -10,20 +10,45 @@
           </div>
           <div class="my-4 px-12">
             <div class="flex text-[30px]">
-              <h1 class="font-semibold mr-1">Grocery</h1>
-              <h1 class="font-light">Store</h1>
+              <h1 class="font-semibold mr-1">Reset</h1>
+              <h1 class="font-light">Password</h1>
             </div>
-            <div class="text-[30px]">
-              <h1 class="font-semibold">System</h1>
-            </div>
+            <!-- <div class="text-[30px]">
+                <h1 class="font-semibold">System</h1>
+              </div> -->
           </div>
           <div class="">
             <form class="rounded px-12 pt-6 pb-8" @submit.prevent="onSubmit">
+              <div class="mb-6 relative">
+                <input
+                  class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
+                  :class="usernameError ? ' border-red-500' : 'border-[#c5c5c9]'"
+                  id="password"
+                  type="text"
+                  placeholder="Please Enter Your Username"
+                  v-model="form.username"
+                />
+                <!-- <button
+                    type="button"
+                    class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
+                    @click="
+                      () => {
+                        togglePassword = !togglePassword
+                      }
+                    "
+                  >
+                    <i :class="togglePassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+                  </button> -->
+                <p :class="usernameError ? 'text-red-500 text-xs italic' : 'hidden'">
+                  Please choose a username.
+                </p>
+              </div>
+
               <div class="mb-4">
                 <input
                   class="shadow appearance-none border rounded w-full py-4 px-3 mb-3 text-gray-700 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
                   :class="emailError ? ' border-red-500' : 'border-[#c5c5c9]'"
-                  id="emai"
+                  id="email"
                   type="email"
                   placeholder="Please Enter Your Email"
                   v-model="form.email"
@@ -32,37 +57,14 @@
                   Please choose a email.
                 </p>
               </div>
-              <div class="mb-6 relative">
-                <input
-                  class="shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-[#70b4dd] focus:shadow-outline"
-                  :class="passwordError ? ' border-red-500' : 'border-[#c5c5c9]'"
-                  id="password"
-                  :type="togglePassword ? 'text' : 'password'"
-                  placeholder="Please Enter Your Password"
-                  v-model="form.password"
-                />
-                <button
-                  type="button"
-                  class="absolute top-0 end-0 p-3.5 rounded-e-md text-slate-400"
-                  @click="
-                    () => {
-                      togglePassword = !togglePassword
-                    }
-                  "
-                >
-                  <i :class="togglePassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
-                </button>
-                <p :class="passwordError ? 'text-red-500 text-xs italic' : 'hidden'">
-                  Please choose a password.
-                </p>
-              </div>
+
               <div class="flex justify-between items-center">
-                <router-link  :to="{ name: 'Reset Password' }">
+                <router-link :to="{ name: 'Login' }">
                   <div
                     class="text-sm text-[#09a0fe] font-medium hover:text-[#6abcf0] cursor-pointer"
                     @click=""
                   >
-                    <span>Forgot Password?</span>
+                    <span>Back To Login Page</span>
                   </div>
                 </router-link>
                 <button class="bg-[#09a0fe] text-white py-2 px-8 rounded-md hover:bg-[#80ceff]">
@@ -78,19 +80,33 @@
       </div>
     </div>
   </div>
+  <OTPDialog
+    :open-dialog="openDialog"
+    @close-dialog="
+      () => {
+        openDialog = !openDialog
+      }
+    "
+  >
+  </OTPDialog>
 </template>
 <script>
 import { ToastMessage } from '@/components/ToastMessage'
+import OTPDialog from './component/OTPDialog.vue'
 export default {
+  components: {
+    OTPDialog
+  },
   data() {
     return {
       form: {
         email: '',
-        password: ''
+        username: '',
       },
       emailError: false,
-      passwordError: false,
-      togglePassword: false
+      usernameError: false,
+      openDialog: false
+      // togglePassword: false
     }
   },
   created() {},
@@ -98,10 +114,11 @@ export default {
   methods: {
     onSubmit() {
       this.emailError = !this.form.email
-      this.passwordError = !this.form.password
+      this.usernameError = !this.form.username
       if (!this.emailError && !this.passwordError) {
-        if (this.form.email == 'admin@admin.com' && this.form.password == 'admin') {
-          this.$router.push({ name: 'Dashboard' })
+        if (this.form.email == 'admin@admin.com' && this.form.username == 'admin') {
+          //   this.$router.push({ name: 'Dashboard' })
+          this.openDialog = true
         } else {
           ToastMessage('error', 'Invalid email address or password. \nPlease try again!')
         }
