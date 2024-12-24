@@ -213,6 +213,11 @@
                     ></i>
                     <i
                       class="fa-solid fa-trash-can cursor-pointer text-base hover:text-[#c3c7ca] px-1"
+                      @click="
+                        () => {
+                          deleteDialog = !deleteDialog
+                        }
+                      "
                     ></i>
                   </p>
                 </td>
@@ -353,21 +358,33 @@
     "
   >
   </AddAccessRight>
+  <DeleteAccessRight
+    :delete-dialog="deleteDialog"
+    @close-dialog="
+      () => {
+        deleteDialog = !deleteDialog
+      }
+    "
+  >
+  </DeleteAccessRight>
 </template>
 <script>
 import { initFlowbite } from 'flowbite'
 //   import FilterDialog from './component/Filter.vue'
 //   import AddInventory from './component/AddInventory.vue'
 import AddAccessRight from './component/AddAccessRight.vue'
+import DeleteAccessRight from './component/DeleteAccessRight.vue'
 export default {
   components: {
     //   FilterDialog,
     //   AddInventory
-    AddAccessRight
+    AddAccessRight,
+    DeleteAccessRight
   },
   data() {
     return {
-      addAccessRightDialog: false
+      addAccessRightDialog: false,
+      deleteDialog: false
       //   tabs: {
       //     dailyTab: true,
       //     weeklyTab: false,

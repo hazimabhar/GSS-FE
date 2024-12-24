@@ -33,7 +33,7 @@
               type="search"
               id="default-search"
               class="block min-w-[350px] p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search Role ..."
+              placeholder="Search User ..."
               required
             />
             <button
@@ -80,36 +80,36 @@
                 class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
               >
                 <div class="flex-shrink-0">
-                  <img class="rounded-full w-5 h-5" src="/quantity.svg" alt="date" />
-                </div>
-                <div class="w-full py-1 pl-2">
-                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Quantity</div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
-              >
-                <div class="flex-shrink-0">
-                  <img class="rounded-full w-6 h-6" src="/total.svg" alt="total" />
-                </div>
-                <div class="w-full py-1 pl-2">
-                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Price</div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
-              >
-                <div class="flex-shrink-0">
-                  <img class="rounded-full w-5 h-5" src="/name.svg" alt="closedby" />
+                  <img class="rounded-full w-5 h-5" src="/name.svg" alt="date" />
                 </div>
                 <div class="w-full py-1 pl-2">
                   <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Name</div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
+              >
+                <div class="flex-shrink-0">
+                  <img class="rounded-full w-6 h-6" src="/role.svg" alt="total" />
+                </div>
+                <div class="w-full py-1 pl-2">
+                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Role</div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 align-middle"
+              >
+                <div class="flex-shrink-0">
+                  <img class="rounded-full w-5 h-5" src="/time.svg" alt="closedby" />
+                </div>
+                <div class="w-full py-1 pl-2">
+                  <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Created At</div>
                 </div>
               </a>
             </li>
@@ -134,14 +134,14 @@
                   <p
                     class="font-semibold block font-sans text-sm antialiased leading-none text-blue-gray-900 opacity-70"
                   >
-                    Role Code
+                    Name
                   </p>
                 </th>
                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
                   <p
                     class="block font-sans text-sm antialiased font-bold leading-none text-blue-gray-900 opacity-70"
                   >
-                    Role Name
+                    Role
                   </p>
                 </th>
                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
@@ -213,6 +213,11 @@
                     ></i>
                     <i
                       class="fa-solid fa-trash-can cursor-pointer text-base hover:text-[#c3c7ca] px-1"
+                      @click="
+                        () => {
+                          deleteDialog = !deleteDialog
+                        }
+                      "
                     ></i>
                   </p>
                 </td>
@@ -353,21 +358,33 @@
     "
   >
   </AddUser>
+  <DeleteUser
+    :delete-dialog="deleteDialog"
+    @close-dialog="
+      () => {
+        deleteDialog = !deleteDialog
+      }
+    "
+  >
+  </DeleteUser>
 </template>
 <script>
 import { initFlowbite } from 'flowbite'
 //   import FilterDialog from './component/Filter.vue'
 //   import AddInventory from './component/AddInventory.vue'
 import AddUser from './component/AddUser.vue'
+import DeleteUser from './component/DeleteUser.vue'
 export default {
   components: {
     //   FilterDialog,
     //   AddInventory
-    AddUser
+    AddUser,
+    DeleteUser
   },
   data() {
     return {
-      addUserDialog: false
+      addUserDialog: false,
+      deleteDialog: false
       //   tabs: {
       //     dailyTab: true,
       //     weeklyTab: false,
